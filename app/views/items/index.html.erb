@@ -1,3 +1,22 @@
+<p>Hello!map!</p>
+
 <div style='width: 800px;'>
   <div id="map" style='width: 800px; height: 400px;'></div>
 </div>
+
+<script type="text/javascript">
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  markers = handler.addMarkers([
+    {
+      // 座標を入力
+      "lat": 33.5862722,         //緯度
+      "lng": 130.372375,         //軽度
+      "infowindow": "大濠公園"     //ピンをクリックした時に表示される吹き出し説明
+    }
+  ]);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+  handler.getMap().setZoom(16);  //縮尺の設定
+});
+</script>
